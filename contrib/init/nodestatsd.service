@@ -1,0 +1,26 @@
+[Unit]
+Description=Nodestats's distributed currency daemon
+After=network.target
+
+[Service]
+User=nodestats
+Group=nodestats
+
+Type=forking
+PIDFile=/var/lib/nodestatsd/nodestatsd.pid
+
+ExecStart=/usr/bin/nodestatsd -daemon -pid=/var/lib/nodestatsd/nodestatsd.pid \
+          -conf=/etc/nodestats/nodestats.conf -datadir=/var/lib/nodestatsd
+
+ExecStop=-/usr/bin/nodestats-cli -conf=/etc/nodestats/nodestats.conf \
+         -datadir=/var/lib/nodestatsd stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target
