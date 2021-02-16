@@ -1,6 +1,6 @@
 Nodestats Core Integration Repository
 =====================================
-![Logo](https://nodestats.info/pics/coins/ns.png)
+![Logo](https://nodestats.info/pics/logos/Rect-Black.png)
 
 
 ### Links
