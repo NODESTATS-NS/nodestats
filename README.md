@@ -6,5 +6,5 @@ Nodestats Core Integration Repository
 ### Links
 - [Official Website](https://nodestats.info/) 
 - [Discord](https://discord.gg/cRCF3BqHsk)
-- [BitcoinTalk](https://bitcointalk.org/index.php?topic=)
+- [BitcoinTalk](https://bitcointalk.org/index.php?topic=5317622.0)
 - [Explorer](http://46.173.218.141:3001/)
