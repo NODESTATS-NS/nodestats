@@ -28,14 +28,14 @@ struct CDNSSeedData {
     CDNSSeedData(const std::string& strName, const std::string& strHost) : name(strName), host(strHost) {}
 };
 
-struct MasternodeTier {
+struct MasternodePhase {
   CAmount Collateral;
   uint16_t Weight;
 };
 
-struct MasternodeTiers {
+struct MasternodePhasen {
   unsigned int blockHeight;
-  std::vector<MasternodeTier> masternodeTiers;
+  std::vector<MasternodePhase> masternodePhasen;
 };
 
 /** The currently-connected chain of blocks. */
@@ -145,14 +145,14 @@ public:
     CAmount InvalidAmountFiltered() const { return nInvalidAmountFiltered; };
   
   bool isMasternodeCollateral (CAmount nValue, unsigned int atBlockHeight = 0) const {
-    MasternodeTiers *currentTiers = getMasternodeTiers (atBlockHeight);
+    MasternodePhasen *currentPhasen = getMasternodePhasen (atBlockHeight);
 
-    if (currentTiers == NULL)
+    if (currentPhasen == NULL)
       return false;
     
     // Check if the given value is on collateral-list
-    BOOST_FOREACH (const MasternodeTier& masternodeTier, currentTiers->masternodeTiers) {
-      if (nValue == masternodeTier.Collateral)
+    BOOST_FOREACH (const MasternodePhase& masternodePhase, currentPhasen->masternodePhasen) {
+      if (nValue == masternodePhase.Collateral)
         return true;
     }
     
@@ -160,7 +160,7 @@ public:
     return false;
   }
   
-  MasternodeTiers *getMasternodeTiers (unsigned int atBlockHeight = 0) const {
+  MasternodePhasen *getMasternodePhasen (unsigned int atBlockHeight = 0) const {
     if (atBlockHeight == 0) {
       CBlockIndex* chainTip = chainActive.Tip ();
       
@@ -168,72 +168,72 @@ public:
         atBlockHeight = chainTip->nHeight;
     }
     
-    MasternodeTiers *currentTiers = NULL;
+    MasternodePhasen *currentPhasen = NULL;
     
-    BOOST_FOREACH (const MasternodeTiers& masternodeTiers, vMasternodeTiers) {
-      if (masternodeTiers.blockHeight <= atBlockHeight)
-        currentTiers = (MasternodeTiers *)&masternodeTiers;
+    BOOST_FOREACH (const MasternodePhasen& masternodePhasen, vMasternodePhasen) {
+      if (masternodePhasen.blockHeight <= atBlockHeight)
+        currentPhasen = (MasternodePhasen *)&masternodePhasen;
       else
         break;
     }
     
-    return currentTiers;
+    return currentPhasen;
   }
   
-  unsigned int getMasternodeTierCount (unsigned int atBlockHeight = 0) const {
-    MasternodeTiers *currentTiers = getMasternodeTiers (atBlockHeight);
+  unsigned int getMasternodePhaseCount (unsigned int atBlockHeight = 0) const {
+    MasternodePhasen *currentPhasen = getMasternodePhasen (atBlockHeight);
     
-    if (currentTiers == NULL)
+    if (currentPhasen == NULL)
       return 0;
     
-    return currentTiers->masternodeTiers.size ();
+    return currentPhasen->masternodePhasen.size ();
   }
   
-  unsigned int getMasternodeTier (CAmount collateralValue, unsigned int atBlockHeight = 0) const {
-    MasternodeTiers *currentTiers = getMasternodeTiers (atBlockHeight);
+  unsigned int getMasternodePhase (CAmount collateralValue, unsigned int atBlockHeight = 0) const {
+    MasternodePhasen *currentPhasen = getMasternodePhasen (atBlockHeight);
     
-    if (currentTiers == NULL)
+    if (currentPhasen == NULL)
       return 0;
     
     unsigned int currentLevel = 0;
     
     // Check if the given value is on collateral-list
-    BOOST_FOREACH (const MasternodeTier& masternodeTier, currentTiers->masternodeTiers) {
+    BOOST_FOREACH (const MasternodePhase& masternodePhase, currentPhasen->masternodePhasen) {
       currentLevel++;
       
-      if (collateralValue == masternodeTier.Collateral)
+      if (collateralValue == masternodePhase.Collateral)
         return currentLevel;
     }
     
     return 0;
   }
   
-  unsigned int getMasternodeTierWeight (unsigned int masternodeTier = 0, unsigned int atBlockHeight = 0) const {
-    MasternodeTiers *currentTiers = getMasternodeTiers (atBlockHeight);
+  unsigned int getMasternodePhaseWeight (unsigned int masternodePhase = 0, unsigned int atBlockHeight = 0) const {
+    MasternodePhasen *currentPhasen = getMasternodePhasen (atBlockHeight);
     
-    if (currentTiers == NULL)
-      return (masternodeTier == 0 ? 1 : 0);
+    if (currentPhasen == NULL)
+      return (masternodePhase == 0 ? 1 : 0);
     
-    // Make sure the tier is valid
-    if (masternodeTier > currentTiers->masternodeTiers.size ())
+    // Make sure the phase is valid
+    if (masternodePhase > currentPhasen->masternodePhasen.size ())
       return 0;
     
-    // Return weight of a given tier
-    if (masternodeTier > 0)
-      return currentTiers->masternodeTiers [masternodeTier - 1].Weight;
+    // Return weight of a given phase
+    if (masternodePhase > 0)
+      return currentPhasen->masternodePhasen [masternodePhase - 1].Weight;
     
-    // Collect sum of all tiers
-    unsigned int tierWeightSum = 0;
+    // Collect sum of all phasen
+    unsigned int phaseWeightSum = 0;
     
-    BOOST_FOREACH (const MasternodeTier& masternodeTier, currentTiers->masternodeTiers) {
-      tierWeightSum += masternodeTier.Weight;
+    BOOST_FOREACH (const MasternodePhase& masternodePhase, currentPhasen->masternodePhasen) {
+      phaseWeightSum += masternodePhase.Weight;
     }
     
     // Never return something less than one, to prevent divisions by zero
-    if (tierWeightSum < 1)
-      tierWeightSum = 1;
+    if (phaseWeightSum < 1)
+      phaseWeightSum = 1;
     
-    return tierWeightSum;
+    return phaseWeightSum;
   }
   
 protected:
@@ -300,7 +300,7 @@ protected:
     int nBlockEnforceInvalidUTXO;
     int nBlockZerocoinV2;
     
-    std::vector<MasternodeTiers> vMasternodeTiers;
+    std::vector<MasternodePhasen> vMasternodePhasen;
 };
 
 /**

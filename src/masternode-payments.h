@@ -251,9 +251,9 @@ public:
         return ss.GetHash();
     }
     
-    unsigned int GetTier ();
+    unsigned int GetPhase ();
     CScript GetPayeeScript ();
-    unsigned int GetPayeeTier ();
+    unsigned int GetPayeePhase ();
     bool Sign(CKey& keyMasternode, CPubKey& pubKeyMasternode);
     bool IsValid(CNode* pnode, std::string& strError);
     bool SignatureValid();
@@ -286,7 +286,7 @@ public:
         std::string ret = "";
         ret += vinMasternode.ToString();
         ret += ", " + boost::lexical_cast<std::string>(nBlockHeight);
-        ret += ", " + GetPayeeScript ().ToString () + "@" + boost::lexical_cast<std::string>(GetPayeeTier ());
+        ret += ", " + GetPayeeScript ().ToString () + "@" + boost::lexical_cast<std::string>(GetPayeePhase ());
         ret += ", " + boost::lexical_cast<std::string>((int)vchSig.size());
         return ret;
     }
@@ -350,13 +350,13 @@ public:
     }
     
     bool CanVote (CMasternodePaymentWinner winner) {
-        unsigned int voteForTier = winner.GetPayeeTier ();
+        unsigned int voteForPhase = winner.GetPayeePhase ();
         COutPoint outMasternode = winner.vinMasternode.prevout;
         int nBlockHeight = winner.nBlockHeight;
         
         LOCK (cs_mapMasternodePayeeVotes);
         
-        uint256 key = ((outMasternode.hash + outMasternode.n) << 4) + voteForTier;
+        uint256 key = ((outMasternode.hash + outMasternode.n) << 4) + voteForPhase;
         
         if (mapMasternodesLastVote.count (key)) {
             if (mapMasternodesLastVote [key] == nBlockHeight)

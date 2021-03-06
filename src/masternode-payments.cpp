@@ -298,12 +298,12 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
     bool hasPayment = true;
     CScript payee;
     
-    for (unsigned int masternodeTier = 1; masternodeTier <= Params ().getMasternodeTierCount (pindexPrev->nHeight + 1); masternodeTier++) {
+    for (unsigned int masternodePhase = 1; masternodePhase <= Params ().getMasternodePhaseCount (pindexPrev->nHeight + 1); masternodePhase++) {
         hasPayment = true;
         
-        if (!masternodePayments.GetBlockPayee (pindexPrev->nHeight + 1, masternodeTier, payee)) {
+        if (!masternodePayments.GetBlockPayee (pindexPrev->nHeight + 1, masternodePhase, payee)) {
             // No masternode was detected
-            CMasternode* winningNode = mnodeman.GetCurrentMasternodeOnLevel (masternodeTier, 1);
+            CMasternode* winningNode = mnodeman.GetCurrentMasternodeOnLevel (masternodePhase, 1);
             
             if (!winningNode) {
                 LogPrint ("masternode", "CreateNewBlock: Failed to detect masternode to pay\n");
@@ -313,7 +313,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
         }
 
         CAmount blockValue = GetBlockValue (pindexPrev->nHeight);
-        CAmount masternodePayment = GetMasternodePayment (pindexPrev->nHeight + 1, masternodeTier, blockValue, 0, fZNSStake);
+        CAmount masternodePayment = GetMasternodePayment (pindexPrev->nHeight + 1, masternodePhase, blockValue, 0, fZNSStake);
         
         if (hasPayment) {
             unsigned int i = txNew.vout.size ();
@@ -374,8 +374,8 @@ void CMasternodePayments::ProcessMessageMasternodePayments(CNode* pfrom, std::st
 
         if (pfrom->nVersion < ActiveProtocol()) return;
         
-        if (winner.GetTier () == 0) {
-            LogPrint ("mnpayments", "CMasternodePayments::ProcessMessageMasternodePayments() : mnw - Could not find tier of masternode \n");
+        if (winner.GetPhase () == 0) {
+            LogPrint ("mnpayments", "CMasternodePayments::ProcessMessageMasternodePayments() : mnw - Could not find phase of masternode \n");
             
             if (masternodeSync.IsSynced ())
                 Misbehaving (pfrom->GetId (), 20);
@@ -385,10 +385,10 @@ void CMasternodePayments::ProcessMessageMasternodePayments(CNode* pfrom, std::st
             return;
         }
         
-        unsigned int payeeTier = winner.GetPayeeTier ();
+        unsigned int payeePhase = winner.GetPayeePhase ();
         
-        if (payeeTier == 0) {
-            LogPrint ("mnpayments", "CMasternodePayments::ProcessMessageMasternodePayments() : mnw - Could not find tier of payee %s\n", winner.GetPayeeScript ().ToAddressString ());
+        if (payeePhase == 0) {
+            LogPrint ("mnpayments", "CMasternodePayments::ProcessMessageMasternodePayments() : mnw - Could not find phase of payee %s\n", winner.GetPayeeScript ().ToAddressString ());
             
             // if (masternodeSync.IsSynced ())
             //    Misbehaving (pfrom->GetId (), 20);
@@ -416,7 +416,7 @@ void CMasternodePayments::ProcessMessageMasternodePayments(CNode* pfrom, std::st
             return;
         }
 
-        int nFirstBlock = nHeight - int (mnodeman.CountEnabledOnLevel (payeeTier) * 1.25);
+        int nFirstBlock = nHeight - int (mnodeman.CountEnabledOnLevel (payeePhase) * 1.25);
         
         if (winner.nBlockHeight < nFirstBlock || winner.nBlockHeight > nHeight + 20) {
             LogPrint("mnpayments", "mnw - winner out of range - FirstBlock %d Height %d bestHeight %d\n", nFirstBlock, winner.nBlockHeight, nHeight);
@@ -451,11 +451,11 @@ void CMasternodePayments::ProcessMessageMasternodePayments(CNode* pfrom, std::st
     }
 }
 
-unsigned int CMasternodePaymentWinner::GetTier () {
+unsigned int CMasternodePaymentWinner::GetPhase () {
     CMasternode* pmn = mnodeman.Find (vinMasternode);
     
     if (pmn)
-        return pmn->GetTier (nBlockHeight);
+        return pmn->GetPhase (nBlockHeight);
     
     return 0;
 }
@@ -484,7 +484,7 @@ CScript CMasternodePaymentWinner::GetPayeeScript () {
     return CScript ();
 }
 
-unsigned int CMasternodePaymentWinner::GetPayeeTier () {
+unsigned int CMasternodePaymentWinner::GetPayeePhase () {
     CMasternode* pmn;
     
     if (ActiveProtocol () < MIN_PEER_PROTO_VERSION_MNW_VIN)
@@ -493,7 +493,7 @@ unsigned int CMasternodePaymentWinner::GetPayeeTier () {
         pmn = mnodeman.Find (vinPayee);
     
     if (pmn)
-        return pmn->GetTier (nBlockHeight);
+        return pmn->GetPhase (nBlockHeight);
     
     return 0;
 }
@@ -581,7 +581,7 @@ bool CMasternodePayments::IsScheduled (CMasternode& mn, int mnLevelCount, int nN
     
     CScript mnPayee;
     CScript payee;
-    unsigned int masternodeLevel = mn.GetTier ();
+    unsigned int masternodeLevel = mn.GetPhase ();
     
     mnPayee = GetScriptForDestination (mn.pubKeyCollateralAddress.GetID());
     
@@ -625,7 +625,7 @@ bool CMasternodePayments::AddWinningMasternode(CMasternodePaymentWinner& winnerI
         }
     }
 
-    mapMasternodeBlocks [winnerIn.nBlockHeight].AddPayee (winnerIn.GetPayeeScript (), winnerIn.GetPayeeTier (), 1);
+    mapMasternodeBlocks [winnerIn.nBlockHeight].AddPayee (winnerIn.GetPayeeScript (), winnerIn.GetPayeePhase (), 1);
 
     return true;
 }
@@ -651,27 +651,27 @@ bool CMasternodeBlockPayees::IsTransactionValid(const CTransaction& txNew)
     bool transactionCorrect = true;
     CAmount requiredMasternodePayment = 0;
 
-    for (unsigned int masternodeTier = 1; masternodeTier <= Params ().getMasternodeTierCount (nBlockHeight); masternodeTier++) {
+    for (unsigned int masternodePhase = 1; masternodePhase <= Params ().getMasternodePhaseCount (nBlockHeight); masternodePhase++) {
         // Require at least 6 signatures
         int nMaxSignatures = 0;
         
         for (CMasternodePayee& payee : vecPayments)
             if ((payee.nVotes >= nMaxSignatures) &&
-                (payee.masternodeLevel == masternodeTier))
+                (payee.masternodeLevel == masternodePhase))
                 nMaxSignatures = payee.nVotes;
         
         // if we don't have at least 6 signatures on a payee, approve whichever is the longest chain
         if (nMaxSignatures < MNPAYMENTS_SIGNATURES_REQUIRED)
             continue;
         
-        requiredMasternodePayment = GetMasternodePayment (nBlockHeight, masternodeTier, nReward, nMasternode_Drift_Count, false);
+        requiredMasternodePayment = GetMasternodePayment (nBlockHeight, masternodePhase, nReward, nMasternode_Drift_Count, false);
         
         bool hasLevelPayment = false;
         std::string strPayeesPossible = "";
         
         for (CMasternodePayee& payee : vecPayments) {
             // Skip payees on other levels
-            if (payee.masternodeLevel != masternodeTier)
+            if (payee.masternodeLevel != masternodePhase)
                 continue;
             
             // Skip payees with little votes
@@ -683,7 +683,7 @@ bool CMasternodeBlockPayees::IsTransactionValid(const CTransaction& txNew)
                 if (payee.scriptPubKey == out.scriptPubKey) {
                     if(out.nValue >= requiredMasternodePayment) {
                         hasLevelPayment = true;
-                        LogPrintf ("Found payment of %s on tier %d at %d\n", FormatMoney (out.nValue).c_str (), masternodeTier, nBlockHeight);
+                        LogPrintf ("Found payment of %s on phase %d at %d\n", FormatMoney (out.nValue).c_str (), masternodePhase, nBlockHeight);
                         
                         break;
                     } else
@@ -705,7 +705,7 @@ bool CMasternodeBlockPayees::IsTransactionValid(const CTransaction& txNew)
         }
         
         if (!hasLevelPayment) {
-            LogPrint ("masternode", "CMasternodePayments::IsTransactionValid - Missing required payment of %s to %s on level %d\n", FormatMoney (requiredMasternodePayment).c_str (), strPayeesPossible.c_str (), masternodeTier);
+            LogPrint ("masternode", "CMasternodePayments::IsTransactionValid - Missing required payment of %s to %s on level %d\n", FormatMoney (requiredMasternodePayment).c_str (), strPayeesPossible.c_str (), masternodePhase);
             
             transactionCorrect = false;
         }
@@ -854,13 +854,13 @@ bool CMasternodePayments::ProcessBlock(int nBlockHeight)
         return false;
     }
     
-    for (unsigned int masternodeTier = 1; masternodeTier <= Params ().getMasternodeTierCount (nBlockHeight + 1); masternodeTier++) {
+    for (unsigned int masternodePhase = 1; masternodePhase <= Params ().getMasternodePhaseCount (nBlockHeight + 1); masternodePhase++) {
         // Create a new winner for this level
         CMasternodePaymentWinner newWinner (activeMasternode.vin);
         
         // pay to the oldest MN that still had no payment but its input is old enough and it was active long enough
         int nCount = 0;
-        CMasternode* pmn = mnodeman.GetNextMasternodeInQueueForPayment (nBlockHeight + 1, masternodeTier, true, nCount);
+        CMasternode* pmn = mnodeman.GetNextMasternodeInQueueForPayment (nBlockHeight + 1, masternodePhase, true, nCount);
         
         if (pmn == NULL) {
             LogPrint ("masternode", "CMasternodePayments::ProcessBlock() Failed to find masternode to pay\n");
@@ -875,7 +875,7 @@ bool CMasternodePayments::ProcessBlock(int nBlockHeight)
         ExtractDestination (newWinner.GetPayeeScript (), address1);
         CBitcoinAddress address2 (address1);
         
-        LogPrint ("masternode", "CMasternodePayments::ProcessBlock() Winner payee %s nHeight %d level %d. \n", address2.ToString ().c_str (), newWinner.nBlockHeight, masternodeTier);
+        LogPrint ("masternode", "CMasternodePayments::ProcessBlock() Winner payee %s nHeight %d level %d. \n", address2.ToString ().c_str (), newWinner.nBlockHeight, masternodePhase);
         
         if (newWinner.Sign (keyMasternode, pubKeyMasternode)) {
             if (AddWinningMasternode (newWinner)) {

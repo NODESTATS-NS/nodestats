@@ -215,112 +215,401 @@ public:
         nZerocoinHeaderVersion = 4; //Block headers must be this version once zerocoin is active
         nZerocoinRequiredStakeDepth = 200; //The required confirmations for a zns to be stakable
         
-    vMasternodeTiers.push_back ({
+    vMasternodePhasen.push_back ({
       0,
       {
         {   10000 * COIN, 90 }
       }
     });
-    vMasternodeTiers.push_back ({
+    vMasternodePhasen.push_back ({
       10000,
       {
-        {  12000 * COIN, 90 }
+        {  10000 * COIN, 0 },
+        {  12000 * COIN, 90 },
+        {  14000 * COIN, 0 },
+        {  16000 * COIN, 0 },
+        {  18000 * COIN, 0 },
+        {  20000 * COIN, 0 },
+        {  22000 * COIN, 0 },
+        {  24000 * COIN, 0 },
+        {  26000 * COIN, 0 },
+        {  30000 * COIN, 0 },
+        {  35000 * COIN, 0 },
+        {  40000 * COIN, 0 },
+        {  45000 * COIN, 0 },
+        {  50000 * COIN, 0 },
+        {  60000 * COIN, 0 },
+        {  70000 * COIN, 0 },
+        {  80000 * COIN, 0 },
+        { 100000 * COIN, 0 }
       }
     });
-    vMasternodeTiers.push_back ({
+    vMasternodePhasen.push_back ({
       30000,
       {
-        {   14000 * COIN, 90 }
+        {  10000 * COIN, 0 },
+        {  12000 * COIN, 0 },
+        {  14000 * COIN, 90 },
+        {  16000 * COIN, 0 },
+        {  18000 * COIN, 0 },
+        {  20000 * COIN, 0 },
+        {  22000 * COIN, 0 },
+        {  24000 * COIN, 0 },
+        {  26000 * COIN, 0 },
+        {  30000 * COIN, 0 },
+        {  35000 * COIN, 0 },
+        {  40000 * COIN, 0 },
+        {  45000 * COIN, 0 },
+        {  50000 * COIN, 0 },
+        {  60000 * COIN, 0 },
+        {  70000 * COIN, 0 },
+        {  80000 * COIN, 0 },
+        { 100000 * COIN, 0 }
       }
     });
-    vMasternodeTiers.push_back ({
+    vMasternodePhasen.push_back ({
       50000,
       {
-        {   16000 * COIN, 90 }
+        {  10000 * COIN, 0 },
+        {  12000 * COIN, 0 },
+        {  14000 * COIN, 0 },
+        {  16000 * COIN, 90 },
+        {  18000 * COIN, 0 },
+        {  20000 * COIN, 0 },
+        {  22000 * COIN, 0 },
+        {  24000 * COIN, 0 },
+        {  26000 * COIN, 0 },
+        {  30000 * COIN, 0 },
+        {  35000 * COIN, 0 },
+        {  40000 * COIN, 0 },
+        {  45000 * COIN, 0 },
+        {  50000 * COIN, 0 },
+        {  60000 * COIN, 0 },
+        {  70000 * COIN, 0 },
+        {  80000 * COIN, 0 },
+        { 100000 * COIN, 0 }
       }
     });
-    vMasternodeTiers.push_back ({
+    vMasternodePhasen.push_back ({
       70000,
       {
-        {   18000 * COIN, 90 }
+        {  10000 * COIN, 0 },
+        {  12000 * COIN, 0 },
+        {  14000 * COIN, 0 },
+        {  16000 * COIN, 0 },
+        {  18000 * COIN, 90 },
+        {  20000 * COIN, 0 },
+        {  22000 * COIN, 0 },
+        {  24000 * COIN, 0 },
+        {  26000 * COIN, 0 },
+        {  30000 * COIN, 0 },
+        {  35000 * COIN, 0 },
+        {  40000 * COIN, 0 },
+        {  45000 * COIN, 0 },
+        {  50000 * COIN, 0 },
+        {  60000 * COIN, 0 },
+        {  70000 * COIN, 0 },
+        {  80000 * COIN, 0 },
+        { 100000 * COIN, 0 }
       }
     });
-    vMasternodeTiers.push_back ({
+    vMasternodePhasen.push_back ({
       90000,
       {
-        {  20000 * COIN, 90 }
+        {  10000 * COIN, 0 },
+        {  12000 * COIN, 0 },
+        {  14000 * COIN, 0 },
+        {  16000 * COIN, 0 },
+        {  18000 * COIN, 0 },
+        {  20000 * COIN, 90 },
+        {  22000 * COIN, 0 },
+        {  24000 * COIN, 0 },
+        {  26000 * COIN, 0 },
+        {  30000 * COIN, 0 },
+        {  35000 * COIN, 0 },
+        {  40000 * COIN, 0 },
+        {  45000 * COIN, 0 },
+        {  50000 * COIN, 0 },
+        {  60000 * COIN, 0 },
+        {  70000 * COIN, 0 },
+        {  80000 * COIN, 0 },
+        { 100000 * COIN, 0 }
       }
     });
-    vMasternodeTiers.push_back ({
+    vMasternodePhasen.push_back ({
       110000,
       {
-        {   22000 * COIN, 90 }
+        {  10000 * COIN, 0 },
+        {  12000 * COIN, 0 },
+        {  14000 * COIN, 0 },
+        {  16000 * COIN, 0 },
+        {  18000 * COIN, 0 },
+        {  20000 * COIN, 0 },
+        {  22000 * COIN, 90 },
+        {  24000 * COIN, 0 },
+        {  26000 * COIN, 0 },
+        {  30000 * COIN, 0 },
+        {  35000 * COIN, 0 },
+        {  40000 * COIN, 0 },
+        {  45000 * COIN, 0 },
+        {  50000 * COIN, 0 },
+        {  60000 * COIN, 0 },
+        {  70000 * COIN, 0 },
+        {  80000 * COIN, 0 },
+        { 100000 * COIN, 0 }
       }
     });
-    vMasternodeTiers.push_back ({
+    vMasternodePhasen.push_back ({
       130000,
       {
-        {  24000 * COIN, 90 }
+        {  10000 * COIN, 0 },
+        {  12000 * COIN, 0 },
+        {  14000 * COIN, 0 },
+        {  16000 * COIN, 0 },
+        {  18000 * COIN, 0 },
+        {  20000 * COIN, 0 },
+        {  22000 * COIN, 0 },
+        {  24000 * COIN, 90 },
+        {  26000 * COIN, 0 },
+        {  30000 * COIN, 0 },
+        {  35000 * COIN, 0 },
+        {  40000 * COIN, 0 },
+        {  45000 * COIN, 0 },
+        {  50000 * COIN, 0 },
+        {  60000 * COIN, 0 },
+        {  70000 * COIN, 0 },
+        {  80000 * COIN, 0 },
+        { 100000 * COIN, 0 }
       }
     });
-    vMasternodeTiers.push_back ({
+    vMasternodePhasen.push_back ({
       150000,
       {
-        {   26000 * COIN, 90 }
+        {  10000 * COIN, 0 },
+        {  12000 * COIN, 0 },
+        {  14000 * COIN, 0 },
+        {  16000 * COIN, 0 },
+        {  18000 * COIN, 0 },
+        {  20000 * COIN, 0 },
+        {  22000 * COIN, 0 },
+        {  24000 * COIN, 0 },
+        {  26000 * COIN, 90 },
+        {  30000 * COIN, 0 },
+        {  35000 * COIN, 0 },
+        {  40000 * COIN, 0 },
+        {  45000 * COIN, 0 },
+        {  50000 * COIN, 0 },
+        {  60000 * COIN, 0 },
+        {  70000 * COIN, 0 },
+        {  80000 * COIN, 0 },
+        { 100000 * COIN, 0 }
       }
     });
-    vMasternodeTiers.push_back ({
+    vMasternodePhasen.push_back ({
       175000,
       {
-        {  30000 * COIN, 90 }
+        {  10000 * COIN, 0 },
+        {  12000 * COIN, 0 },
+        {  14000 * COIN, 0 },
+        {  16000 * COIN, 0 },
+        {  18000 * COIN, 0 },
+        {  20000 * COIN, 0 },
+        {  22000 * COIN, 0 },
+        {  24000 * COIN, 0 },
+        {  26000 * COIN, 0 },
+        {  30000 * COIN, 90 },
+        {  35000 * COIN, 0 },
+        {  40000 * COIN, 0 },
+        {  45000 * COIN, 0 },
+        {  50000 * COIN, 0 },
+        {  60000 * COIN, 0 },
+        {  70000 * COIN, 0 },
+        {  80000 * COIN, 0 },
+        { 100000 * COIN, 0 }
       }
     });
-    vMasternodeTiers.push_back ({
+    vMasternodePhasen.push_back ({
       200000,
       {
-        {   35000 * COIN, 90 }
+        {  10000 * COIN, 0 },
+        {  12000 * COIN, 0 },
+        {  14000 * COIN, 0 },
+        {  16000 * COIN, 0 },
+        {  18000 * COIN, 0 },
+        {  20000 * COIN, 0 },
+        {  22000 * COIN, 0 },
+        {  24000 * COIN, 0 },
+        {  26000 * COIN, 0 },
+        {  30000 * COIN, 0 },
+        {  35000 * COIN, 90 },
+        {  40000 * COIN, 0 },
+        {  45000 * COIN, 0 },
+        {  50000 * COIN, 0 },
+        {  60000 * COIN, 0 },
+        {  70000 * COIN, 0 },
+        {  80000 * COIN, 0 },
+        { 100000 * COIN, 0 }
       }
     });
-    vMasternodeTiers.push_back ({
+    vMasternodePhasen.push_back ({
       225000,
       {
-        {  40000 * COIN, 90 }
+        {  10000 * COIN, 0 },
+        {  12000 * COIN, 0 },
+        {  14000 * COIN, 0 },
+        {  16000 * COIN, 0 },
+        {  18000 * COIN, 0 },
+        {  20000 * COIN, 0 },
+        {  22000 * COIN, 0 },
+        {  24000 * COIN, 0 },
+        {  26000 * COIN, 0 },
+        {  30000 * COIN, 0 },
+        {  35000 * COIN, 0 },
+        {  40000 * COIN, 90 },
+        {  45000 * COIN, 0 },
+        {  50000 * COIN, 0 },
+        {  60000 * COIN, 0 },
+        {  70000 * COIN, 0 },
+        {  80000 * COIN, 0 },
+        { 100000 * COIN, 0 }
       }
     });
-    vMasternodeTiers.push_back ({
+    vMasternodePhasen.push_back ({
       250000,
       {
-        {   45000 * COIN, 90 }
+        {  10000 * COIN, 0 },
+        {  12000 * COIN, 0 },
+        {  14000 * COIN, 0 },
+        {  16000 * COIN, 0 },
+        {  18000 * COIN, 0 },
+        {  20000 * COIN, 0 },
+        {  22000 * COIN, 0 },
+        {  24000 * COIN, 0 },
+        {  26000 * COIN, 0 },
+        {  30000 * COIN, 0 },
+        {  35000 * COIN, 0 },
+        {  40000 * COIN, 0 },
+        {  45000 * COIN, 90 },
+        {  50000 * COIN, 0 },
+        {  60000 * COIN, 0 },
+        {  70000 * COIN, 0 },
+        {  80000 * COIN, 0 },
+        { 100000 * COIN, 0 }
       }
     });
-    vMasternodeTiers.push_back ({
+    vMasternodePhasen.push_back ({
       300000,
       {
-        {  50000 * COIN, 90 }
+        {  10000 * COIN, 0 },
+        {  12000 * COIN, 0 },
+        {  14000 * COIN, 0 },
+        {  16000 * COIN, 0 },
+        {  18000 * COIN, 0 },
+        {  20000 * COIN, 0 },
+        {  22000 * COIN, 0 },
+        {  24000 * COIN, 0 },
+        {  26000 * COIN, 0 },
+        {  30000 * COIN, 0 },
+        {  35000 * COIN, 0 },
+        {  40000 * COIN, 0 },
+        {  45000 * COIN, 0 },
+        {  50000 * COIN, 90 },
+        {  60000 * COIN, 0 },
+        {  70000 * COIN, 0 },
+        {  80000 * COIN, 0 },
+        { 100000 * COIN, 0 }
       }
     });
-    vMasternodeTiers.push_back ({
+    vMasternodePhasen.push_back ({
       400000,
       {
-        {  60000 * COIN, 90 }
+        {  10000 * COIN, 0 },
+        {  12000 * COIN, 0 },
+        {  14000 * COIN, 0 },
+        {  16000 * COIN, 0 },
+        {  18000 * COIN, 0 },
+        {  20000 * COIN, 0 },
+        {  22000 * COIN, 0 },
+        {  24000 * COIN, 0 },
+        {  26000 * COIN, 0 },
+        {  30000 * COIN, 0 },
+        {  35000 * COIN, 0 },
+        {  40000 * COIN, 0 },
+        {  45000 * COIN, 0 },
+        {  50000 * COIN, 0 },
+        {  60000 * COIN, 90 },
+        {  70000 * COIN, 0 },
+        {  80000 * COIN, 0 },
+        { 100000 * COIN, 0 }
       }
     });
-    vMasternodeTiers.push_back ({
+    vMasternodePhasen.push_back ({
       500000,
       {
-        {  70000 * COIN, 90 }
+        {  10000 * COIN, 0 },
+        {  12000 * COIN, 0 },
+        {  14000 * COIN, 0 },
+        {  16000 * COIN, 0 },
+        {  18000 * COIN, 0 },
+        {  20000 * COIN, 0 },
+        {  22000 * COIN, 0 },
+        {  24000 * COIN, 0 },
+        {  26000 * COIN, 0 },
+        {  30000 * COIN, 0 },
+        {  35000 * COIN, 0 },
+        {  40000 * COIN, 0 },
+        {  45000 * COIN, 0 },
+        {  50000 * COIN, 0 },
+        {  60000 * COIN, 0 },
+        {  70000 * COIN, 90 },
+        {  80000 * COIN, 0 },
+        { 100000 * COIN, 0 }
       }
     });
-    vMasternodeTiers.push_back ({
+    vMasternodePhasen.push_back ({
       750000,
       {
-        {  80000 * COIN, 90 }
+        {  10000 * COIN, 0 },
+        {  12000 * COIN, 0 },
+        {  14000 * COIN, 0 },
+        {  16000 * COIN, 0 },
+        {  18000 * COIN, 0 },
+        {  20000 * COIN, 0 },
+        {  22000 * COIN, 0 },
+        {  24000 * COIN, 0 },
+        {  26000 * COIN, 0 },
+        {  30000 * COIN, 0 },
+        {  35000 * COIN, 0 },
+        {  40000 * COIN, 0 },
+        {  45000 * COIN, 0 },
+        {  50000 * COIN, 0 },
+        {  60000 * COIN, 0 },
+        {  70000 * COIN, 0 },
+        {  80000 * COIN, 90 },
+        { 100000 * COIN, 0 }
       }
     });
-    vMasternodeTiers.push_back ({
+    vMasternodePhasen.push_back ({
       1000000,
       {
-        {  100000 * COIN, 90 }
+        {  10000 * COIN, 0 },
+        {  12000 * COIN, 0 },
+        {  14000 * COIN, 0 },
+        {  16000 * COIN, 0 },
+        {  18000 * COIN, 0 },
+        {  20000 * COIN, 0 },
+        {  22000 * COIN, 0 },
+        {  24000 * COIN, 0 },
+        {  26000 * COIN, 0 },
+        {  30000 * COIN, 0 },
+        {  35000 * COIN, 0 },
+        {  40000 * COIN, 0 },
+        {  45000 * COIN, 0 },
+        {  50000 * COIN, 0 },
+        {  60000 * COIN, 0 },
+        {  70000 * COIN, 0 },
+        {  80000 * COIN, 0 },
+        { 100000 * COIN, 90 }
       }
     });
   }

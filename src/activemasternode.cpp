@@ -317,24 +317,24 @@ bool CActiveMasternode::GetMasterNodeVin(CTxIn& vin, CPubKey& pubkey, CKey& secr
         
         selectedOutput = &possibleCoins [0];
         
-        unsigned int selectedTier = Params ().getMasternodeTier (selectedOutput->tx->vout [selectedOutput->i].nValue);
-        unsigned int maxTier = Params ().getMasternodeTierCount ();
+        unsigned int selectedPhase = Params ().getMasternodePhase (selectedOutput->tx->vout [selectedOutput->i].nValue);
+        unsigned int maxPhase = Params ().getMasternodePhaseCount ();
         
         BOOST_FOREACH (COutput& out, possibleCoins) {
-            if (selectedTier == maxTier)
+            if (selectedPhase == maxPhase)
                 break;
             
-            unsigned int nextTier = Params ().getMasternodeTier (out.tx->vout [out.i].nValue);
+            unsigned int nextPhase = Params ().getMasternodePhase (out.tx->vout [out.i].nValue);
             
-            if (nextTier <= selectedTier)
+            if (nextPhase <= selectedPhase)
                 continue;
             
-            selectedTier = nextTier;
+            selectedPhase = nextPhase;
             selectedOutput = &out;
             found = true;
         }
         
-        if (maxTier < 1)
+        if (maxPhase < 1)
             found = false;
     }
     

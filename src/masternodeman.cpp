@@ -360,7 +360,7 @@ int CMasternodeMan::stable_size (unsigned int masternodeLevel) {
     int64_t nMasternode_Age = 0;
 
     for (CMasternode& mn : vMasternodes) {
-        if ((masternodeLevel > 0) && (mn.GetTier () != masternodeLevel))
+        if ((masternodeLevel > 0) && (mn.GetPhase () != masternodeLevel))
             continue;
         
         if (mn.protocolVersion < nMinProtocol) {
@@ -396,7 +396,7 @@ int CMasternodeMan::CountEnabledOnLevel (unsigned int mnLevel, int protocolVersi
         
         if (mn.protocolVersion < protocolVersion ||
             !mn.IsEnabled () ||
-            ((mnLevel > 0) && (mnLevel != mn.GetTier ())))
+            ((mnLevel > 0) && (mnLevel != mn.GetPhase ())))
             continue;
         
         masternodeCount++;
@@ -413,7 +413,7 @@ void CMasternodeMan::CountNetworks (unsigned int masternodeLevel, int protocolVe
     protocolVersion = protocolVersion == -1 ? masternodePayments.GetMinMasternodePaymentsProto() : protocolVersion;
 
     for (CMasternode& mn : vMasternodes) {
-        if ((masternodeLevel > 0) && (mn.GetTier () != masternodeLevel))
+        if ((masternodeLevel > 0) && (mn.GetPhase () != masternodeLevel))
             continue;
         
         mn.Check();
@@ -513,9 +513,9 @@ CMasternode* CMasternodeMan::GetNextMasternodeInQueueForPayment (int nBlockHeigh
     for (CMasternode& mn : vMasternodes) {
         mn.Check();
         
-        // Check the level of tiered masternode
+        // Check the level of phaseed masternode
         if ((masternodeLevel > 0) &&
-            (mn.GetTier (nBlockHeight) != masternodeLevel))
+            (mn.GetPhase (nBlockHeight) != masternodeLevel))
             continue;
         
         if (!mn.IsEnabled()) continue;
@@ -612,7 +612,7 @@ CMasternode* CMasternodeMan::GetCurrentMasternodeOnLevel (unsigned int masternod
         mn.Check();
         
         if ((masternodeLevel > 0) &&
-            (mn.GetTier () != masternodeLevel))
+            (mn.GetPhase () != masternodeLevel))
             continue;
         
         if (mn.protocolVersion < minProtocol || !mn.IsEnabled()) continue;

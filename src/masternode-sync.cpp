@@ -226,7 +226,7 @@ void CMasternodeSync::ClearFulfilledRequest()
 
     BOOST_FOREACH (CNode* pnode, vNodes) {
         pnode->ClearFulfilledRequest("getspork");
-        pnode->ClearFulfilledRequest("nsync");
+        pnode->ClearFulfilledRequest("mnsync");
         pnode->ClearFulfilledRequest("mnwsync");
         pnode->ClearFulfilledRequest("busync");
     }
@@ -304,8 +304,8 @@ void CMasternodeSync::Process()
                     return;
                 }
 
-                if (pnode->HasFulfilledRequest("nsync")) continue;
-                pnode->FulfilledRequest("nsync");
+                if (pnode->HasFulfilledRequest("mnsync")) continue;
+                pnode->FulfilledRequest("mnsync");
 
                 // timeout
                 if (lastMasternodeList == 0 &&

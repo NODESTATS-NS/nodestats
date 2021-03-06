@@ -158,7 +158,7 @@ public:
         int masternodeCount = 0;
         
         BOOST_FOREACH (CMasternode masternode, vMasternodes) {
-            if (masternode.GetTier () == masternodeLevel)
+            if (masternode.GetPhase () == masternodeLevel)
                 masternodeCount++;
         }
         

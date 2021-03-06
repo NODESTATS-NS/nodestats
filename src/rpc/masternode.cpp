@@ -34,9 +34,9 @@ UniValue getpoolinfo(const UniValue& params, bool fHelp)
             "  \"state\": xxxx,          (string) unknown\n"
             "  \"entries\": xxxx,        (numeric) Number of entries\n"
             "  \"accepted\": xxxx,       (numeric) Number of entries accepted\n"
-            "  \"tiers\": [\n"
+            "  \"phasen\": [\n"
             "    {\n"
-            "      \"tier\": t,          (numeric) Level of tier\n"
+            "      \"phase\": t,          (numeric) Level of phase\n"
             "      \"current\": \"addr\",  (string) Nodestats address of current masternode\n"
             "      \"state\": xxxx,      (string) unknown\n"
             "      \"entries\": xxxx,    (numeric) Number of entries\n"
@@ -55,23 +55,23 @@ UniValue getpoolinfo(const UniValue& params, bool fHelp)
     obj.push_back(Pair("entries", obfuScationPool.GetEntriesCount()));
     obj.push_back(Pair("entries_accepted", obfuScationPool.GetCountEntriesAccepted()));
     
-    UniValue tiers (UniValue::VARR);
+    UniValue phasen (UniValue::VARR);
     
-    for (unsigned int masternodeTier = 1; masternodeTier <= Params ().getMasternodeTierCount (); masternodeTier++) {
-        UniValue tier (UniValue::VOBJ);
+    for (unsigned int masternodePhase = 1; masternodePhase <= Params ().getMasternodePhaseCount (); masternodePhase++) {
+        UniValue phase (UniValue::VOBJ);
         
-        tier.push_back (Pair ("tier", (uint64_t)masternodeTier));
-        tier.push_back (Pair ("current", mnodeman.GetCurrentMasternodeOnLevel (masternodeTier)->addr.ToString()));
+        phase.push_back (Pair ("phase", (uint64_t)masternodePhase));
+        phase.push_back (Pair ("current", mnodeman.GetCurrentMasternodeOnLevel (masternodePhase)->addr.ToString()));
         
         // TODO: This is senseless :)
-        tier.push_back (Pair ("state", obfuScationPool.GetState ()));
-        tier.push_back (Pair ("entries", obfuScationPool.GetEntriesCount ()));
-        tier.push_back (Pair ("entries_accepted", obfuScationPool.GetCountEntriesAccepted ()));
+        phase.push_back (Pair ("state", obfuScationPool.GetState ()));
+        phase.push_back (Pair ("entries", obfuScationPool.GetEntriesCount ()));
+        phase.push_back (Pair ("entries_accepted", obfuScationPool.GetCountEntriesAccepted ()));
         
-        tiers.push_back (tier);
+        phasen.push_back (phase);
     }
     
-    obj.push_back (Pair ("tiers", tiers));
+    obj.push_back (Pair ("phasen", phasen));
     
     return obj;
 }
@@ -234,7 +234,7 @@ UniValue listmasternodes(const UniValue& params, bool fHelp)
             "\nResult:\n"
             "[\n"
             "  {\n"
-            "    \"tier\": t,           (numeric) Tier-Level of masternode\n"
+            "    \"phase\": t,           (numeric) Phase-Level of masternode\n"
             "    \"rank\": n,           (numeric) Masternode Rank (or 0 if not enabled)\n"
             "    \"txhash\": \"hash\",    (string) Collateral transaction hash\n"
             "    \"outidx\": n,         (numeric) Collateral transaction output index\n"
@@ -280,7 +280,7 @@ UniValue listmasternodes(const UniValue& params, bool fHelp)
             CNetAddr node = CNetAddr(strHost, false);
             std::string strNetwork = GetNetworkName(node.GetNetwork());
 
-            obj.push_back (Pair ("tier", (uint64_t)mn->GetTier ()));
+            obj.push_back (Pair ("phase", (uint64_t)mn->GetPhase ()));
             obj.push_back(Pair("rank", (strStatus == "ENABLED" ? s.first : 0)));
             obj.push_back(Pair("network", strNetwork));
             obj.push_back(Pair("txhash", strTxHash));
@@ -343,9 +343,9 @@ UniValue getmasternodecount (const UniValue& params, bool fHelp)
             "  \"ipv4\": n,           (numeric) Masternodes with IPv4 address\n"
             "  \"ipv6\": n,           (numeric) Masternodes with IPv6 address\n"
             "  \"onion\": n,          (numeric) Masternodes with Onion address\n"
-            "  \"tiers\": [\n"
+            "  \"phasen\": [\n"
             "    {\n"
-            "      \"tier\": t,       (numeric) Tier-Level\n"
+            "      \"phase\": t,       (numeric) Phase-Level\n"
             "      \"total\": n,      (numeric) Total masternodes\n"
             "      \"stable\": n,     (numeric) Stable count\n"
             "      \"obfcompat\": n,  (numeric) Obfuscation Compatible\n"
@@ -380,32 +380,32 @@ UniValue getmasternodecount (const UniValue& params, bool fHelp)
     obj.push_back(Pair("ipv6", ipv6));
     obj.push_back(Pair("onion", onion));
     
-    UniValue tiers (UniValue::VARR);
+    UniValue phasen (UniValue::VARR);
 
-    for (unsigned int masternodeTier = 1; masternodeTier <= Params ().getMasternodeTierCount (); masternodeTier++) {
-        UniValue tier (UniValue::VOBJ);
+    for (unsigned int masternodePhase = 1; masternodePhase <= Params ().getMasternodePhaseCount (); masternodePhase++) {
+        UniValue phase (UniValue::VOBJ);
         
         nCount = ipv4 = ipv6 = onion = 0;
         
         if (chainActive.Tip ())
-            mnodeman.GetNextMasternodeInQueueForPayment (chainActive.Tip ()->nHeight, masternodeTier, true, nCount);
+            mnodeman.GetNextMasternodeInQueueForPayment (chainActive.Tip ()->nHeight, masternodePhase, true, nCount);
         
-        mnodeman.CountNetworks (masternodeTier, ActiveProtocol (), ipv4, ipv6, onion);
+        mnodeman.CountNetworks (masternodePhase, ActiveProtocol (), ipv4, ipv6, onion);
         
-        tier.push_back (Pair ("tier", (uint64_t)masternodeTier));
-        tier.push_back (Pair ("total", mnodeman.size (masternodeTier)));
-        tier.push_back (Pair ("stable", mnodeman.stable_size (masternodeTier)));
-        tier.push_back (Pair ("obfcompat", mnodeman.CountEnabledOnLevel (masternodeTier, ActiveProtocol ())));
-        tier.push_back (Pair ("enabled", mnodeman.CountEnabledOnLevel (masternodeTier)));
-        tier.push_back (Pair ("inqueue", nCount));
-        tier.push_back (Pair ("ipv4", ipv4));
-        tier.push_back (Pair ("ipv6", ipv6));
-        tier.push_back (Pair ("onion", onion));
+        phase.push_back (Pair ("phase", (uint64_t)masternodePhase));
+        phase.push_back (Pair ("total", mnodeman.size (masternodePhase)));
+        phase.push_back (Pair ("stable", mnodeman.stable_size (masternodePhase)));
+        phase.push_back (Pair ("obfcompat", mnodeman.CountEnabledOnLevel (masternodePhase, ActiveProtocol ())));
+        phase.push_back (Pair ("enabled", mnodeman.CountEnabledOnLevel (masternodePhase)));
+        phase.push_back (Pair ("inqueue", nCount));
+        phase.push_back (Pair ("ipv4", ipv4));
+        phase.push_back (Pair ("ipv6", ipv6));
+        phase.push_back (Pair ("onion", onion));
 
-        tiers.push_back (tier);
+        phasen.push_back (phase);
     }
 
-    obj.push_back (Pair ("tiers", tiers));
+    obj.push_back (Pair ("phasen", phasen));
 
     return obj;
 }
@@ -424,9 +424,9 @@ UniValue masternodecurrent (const UniValue& params, bool fHelp)
             "  \"pubkey\": \"xxxx\",          (string) MN Public key\n"
             "  \"lastseen\": xxx,           (numeric) Time since epoch of last seen\n"
             "  \"activeseconds\": xxx,      (numeric) Seconds MN has been active\n"
-            "  \"tiers\": [\n"
+            "  \"phasen\": [\n"
             "    {\n"
-            "      \"tier\": tier,          (numeric) Tier-Level\n"
+            "      \"phase\": phase,          (numeric) Phase-Level\n"
             "      \"protocol\": xxxx,      (numeric) Protocol version\n"
             "      \"txhash\": \"xxxx\",      (string) Collateral transaction hash\n"
             "      \"pubkey\": \"xxxx\",      (string) MN Public key\n"
@@ -453,25 +453,25 @@ UniValue masternodecurrent (const UniValue& params, bool fHelp)
     obj.push_back (Pair ("lastseen", (winner->lastPing == CMasternodePing ()) ? winner->sigTime : (int64_t)winner->lastPing.sigTime));
     obj.push_back (Pair ("activeseconds", (winner->lastPing == CMasternodePing ()) ? 0 : (int64_t)(winner->lastPing.sigTime - winner->sigTime)));
     
-    UniValue tiers (UniValue::VARR);
+    UniValue phasen (UniValue::VARR);
     
-    for (unsigned int masternodeTier = 1; masternodeTier <= Params ().getMasternodeTierCount (); masternodeTier++) {
-        if (!(winner = mnodeman.GetCurrentMasternodeOnLevel (masternodeTier, 1)))
+    for (unsigned int masternodePhase = 1; masternodePhase <= Params ().getMasternodePhaseCount (); masternodePhase++) {
+        if (!(winner = mnodeman.GetCurrentMasternodeOnLevel (masternodePhase, 1)))
             continue;
         
-        UniValue tier (UniValue::VOBJ);
+        UniValue phase (UniValue::VOBJ);
         
-        tier.push_back (Pair ("tier", (uint64_t)masternodeTier));
-        tier.push_back (Pair ("protocol", (int64_t)winner->protocolVersion));
-        tier.push_back (Pair ("txhash", winner->vin.prevout.hash.ToString ()));
-        tier.push_back (Pair ("pubkey", CBitcoinAddress (winner->pubKeyCollateralAddress.GetID ()).ToString ()));
-        tier.push_back (Pair ("lastseen", (winner->lastPing == CMasternodePing ()) ? winner->sigTime : (int64_t)winner->lastPing.sigTime));
-        tier.push_back (Pair ("activeseconds", (winner->lastPing == CMasternodePing ()) ? 0 : (int64_t)(winner->lastPing.sigTime - winner->sigTime)));
+        phase.push_back (Pair ("phase", (uint64_t)masternodePhase));
+        phase.push_back (Pair ("protocol", (int64_t)winner->protocolVersion));
+        phase.push_back (Pair ("txhash", winner->vin.prevout.hash.ToString ()));
+        phase.push_back (Pair ("pubkey", CBitcoinAddress (winner->pubKeyCollateralAddress.GetID ()).ToString ()));
+        phase.push_back (Pair ("lastseen", (winner->lastPing == CMasternodePing ()) ? winner->sigTime : (int64_t)winner->lastPing.sigTime));
+        phase.push_back (Pair ("activeseconds", (winner->lastPing == CMasternodePing ()) ? 0 : (int64_t)(winner->lastPing.sigTime - winner->sigTime)));
 
-        tiers.push_back (tier);
+        phasen.push_back (phase);
     }
 
-    obj.push_back (Pair ("tiers", tiers));
+    obj.push_back (Pair ("phasen", phasen));
     
     return obj;
 }
@@ -703,7 +703,7 @@ UniValue getmasternodeoutputs (const UniValue& params, bool fHelp)
             "  {\n"
             "    \"txhash\": \"xxxx\",    (string) output transaction hash\n"
             "    \"outputidx\": n,        (numeric) output index number\n"
-            "    \"tier\": t,             (numeric) tier-level of output\n"	
+            "    \"phase\": t,             (numeric) phase-level of output\n"	
             "  }\n"
             "  ,...\n"
             "]\n"
@@ -719,7 +719,7 @@ UniValue getmasternodeoutputs (const UniValue& params, bool fHelp)
         UniValue obj(UniValue::VOBJ);
         obj.push_back(Pair("txhash", out.tx->GetHash().ToString()));
         obj.push_back(Pair("outputidx", out.i));
-        obj.push_back (Pair ("tier", (uint64_t)Params ().getMasternodeTier (out.tx->vout [out.i].nValue)));
+        obj.push_back (Pair ("phase", (uint64_t)Params ().getMasternodePhase (out.tx->vout [out.i].nValue)));
         ret.push_back(obj);
     }
 
@@ -749,7 +749,7 @@ UniValue listmasternodeconf (const UniValue& params, bool fHelp)
             "    \"txHash\": \"xxxx\",       (string) transaction hash\n"
             "    \"outputIndex\": n,       (numeric) transaction output index\n"
             "    \"status\": \"xxxx\",       (string) masternode status\n"
-            "    \"tier\": tier,           (numeric) Tier-Level of masternode\n"
+            "    \"phase\": phase,           (numeric) Phase-Level of masternode\n"
             "  }\n"
             "  ,...\n"
             "]\n"
@@ -788,7 +788,7 @@ UniValue listmasternodeconf (const UniValue& params, bool fHelp)
         
         if (GetTransaction (vin.prevout.hash, prevTx, hashBlock, true) &&
             (prevTx.vout.size () > vin.prevout.n))
-            mnObj.push_back (Pair ("tier", (uint64_t)Params ().getMasternodeTier (prevTx.vout [vin.prevout.n].nValue)));
+            mnObj.push_back (Pair ("phase", (uint64_t)Params ().getMasternodePhase (prevTx.vout [vin.prevout.n].nValue)));
         
         ret.push_back(mnObj);
     }
@@ -811,7 +811,7 @@ UniValue getmasternodestatus (const UniValue& params, bool fHelp)
             "  \"addr\": \"xxxx\",        (string) Nodestats address for masternode payments\n"
             "  \"status\": \"xxxx\",      (string) Masternode status\n"
             "  \"message\": \"xxxx\",     (string) Masternode status message\n"
-            "  \"tier\": tier,          (numeric) Tier-Level of masternode\n"
+            "  \"phase\": phase,          (numeric) Phase-Level of masternode\n"
             "}\n"
 
             "\nExamples:\n" +
@@ -829,7 +829,7 @@ UniValue getmasternodestatus (const UniValue& params, bool fHelp)
         mnObj.push_back(Pair("addr", CBitcoinAddress(pmn->pubKeyCollateralAddress.GetID()).ToString()));
         mnObj.push_back(Pair("status", activeMasternode.status));
         mnObj.push_back(Pair("message", activeMasternode.GetStatus()));
-        mnObj.push_back (Pair ("tier", (uint64_t)pmn->GetTier ()));
+        mnObj.push_back (Pair ("phase", (uint64_t)pmn->GetPhase ()));
         
         return mnObj;
     }
@@ -855,7 +855,7 @@ UniValue getmasternodewinners (const UniValue& params, bool fHelp)
             "      {\n"
             "        \"address\": \"xxxx\",  (string) Nodestats MN/Budget Address\n"
             "        \"nVotes\": n,        (numeric) Number of votes for winner if payee is a masternode\n"
-            "        \"tier\": tier,       (numeric) Tier-Level if payee is a masternode\n"
+            "        \"phase\": phase,       (numeric) Phase-Level if payee is a masternode\n"
             "      }\n"
             "      ,...\n"
             "    ]\n"
@@ -894,7 +894,7 @@ UniValue getmasternodewinners (const UniValue& params, bool fHelp)
             
             winner.push_back (Pair ("address", paymentWinner.strAddress));
             winner.push_back (Pair ("nVotes", paymentWinner.nVotes));
-            winner.push_back (Pair ("tier", (uint64_t)paymentWinner.masternodeLevel));
+            winner.push_back (Pair ("phase", (uint64_t)paymentWinner.masternodeLevel));
             
             winners.push_back (winner);
         }
@@ -904,7 +904,7 @@ UniValue getmasternodewinners (const UniValue& params, bool fHelp)
             
             winner.push_back (Pair ("address", "Unknown"));
             winner.push_back (Pair ("nVotes", 0));
-            winner.push_back (Pair ("tier", 0));
+            winner.push_back (Pair ("phase", 0));
             
             winners.push_back (winner);
         }
@@ -930,7 +930,7 @@ UniValue getmasternodescores (const UniValue& params, bool fHelp)
             "{\n"
             "  xxxx: [\n   (numeric) Block height\n"
             "    {\n"
-            "      \"tier\": tier,\n"
+            "      \"phase\": phase,\n"
             "      \"hash\": \"hash\"\n"
             "    },\n"
             "    ...\n"
@@ -956,12 +956,12 @@ UniValue getmasternodescores (const UniValue& params, bool fHelp)
     for (int nHeight = chainActive.Tip()->nHeight - nLast; nHeight < chainActive.Tip()->nHeight + 20; nHeight++) {
         UniValue block (UniValue::VARR);
         
-        for (unsigned int masternodeTier = 1; masternodeTier <= Params ().getMasternodeTierCount (); masternodeTier++) {
+        for (unsigned int masternodePhase = 1; masternodePhase <= Params ().getMasternodePhaseCount (); masternodePhase++) {
             uint256 nHigh = 0;
             CMasternode* pBestMasternode = NULL;
             
             BOOST_FOREACH (CMasternode& mn, vMasternodes) {
-                if (mn.GetTier () != masternodeTier)
+                if (mn.GetPhase () != masternodePhase)
                     continue;
                 
                 uint256 n = mn.CalculateScore (1, nHeight - 100);
@@ -973,12 +973,12 @@ UniValue getmasternodescores (const UniValue& params, bool fHelp)
             }
             
             if (pBestMasternode) {
-                UniValue tier (UniValue::VOBJ);
+                UniValue phase (UniValue::VOBJ);
                 
-                tier.push_back (Pair ("tier", (uint64_t)masternodeTier));
-                tier.push_back (Pair ("hash", pBestMasternode->vin.prevout.hash.ToString ().c_str ()));
+                phase.push_back (Pair ("phase", (uint64_t)masternodePhase));
+                phase.push_back (Pair ("hash", pBestMasternode->vin.prevout.hash.ToString ().c_str ()));
                 
-                block.push_back (tier);
+                block.push_back (phase);
             }
         }
         

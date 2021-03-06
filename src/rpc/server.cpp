@@ -381,7 +381,7 @@ static const CRPCCommand vRPCCommands[] =
         {"nodestats", "mnbudgetrawvote", &mnbudgetrawvote, true, true, false},
         {"nodestats", "mnfinalbudget", &mnfinalbudget, true, true, false},
         {"nodestats", "checkbudgets", &checkbudgets, true, true, false},
-        {"nodestats", "nsync", &nsync, true, true, false},
+        {"nodestats", "mnsync", &mnsync, true, true, false},
         {"nodestats", "spork", &spork, true, true, false},
         {"nodestats", "getpoolinfo", &getpoolinfo, true, true, false},
 
