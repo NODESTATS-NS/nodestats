@@ -1,4 +1,4 @@
-![Logo](https://nodestats.info/pics/logos/Rect- Black.png)
+![Logo](https://nodestats.info/pics/logos/Rect-Black.png)
 
 ### Links
 
@@ -15,7 +15,7 @@
 - ![Logo](https://camo.githubusercontent.com/a86d890bc4a5925958818e39e271f6cebdaa12f71875e8eee4f55a240d08a470/68747470733a2f2f6d617374657277696e2e6f6e6c696e652f6769746875622f3730323836383435343730303438323539302e706e673f) [Crex24 NS/USDT](https://crex24.com/exchange/NS-USDT)
 - ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817900766601019424/4344.png) [NON KYC FinexBox NS/BTC](https://www.finexbox.com/market/pair/NS-BTC.html)
 - ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817906374054772736/frei.png) [Freiexchange NS/BTC](https://freiexchange.com/market/NS/BTC)
-- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817907928131829760/logofront3.png) [StakeCenter NS/BTC] https://stakecenter.co/client/exchange/BTC/NS)
+- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817907928131829760/logofront3.png) [StakeCenter NS/BTC](https://stakecenter.co/client/exchange/BTC/NS)
 - ![Logo](https://camo.githubusercontent.com/a1c4b292b9675610b46f6f74234d6abd42a29afba84d00c72b841a4534dc460e/68747470733a2f2f6d617374657277696e2e6f6e6c696e652f6769746875622f3730333833363730303633313336373732302e706e673f) [Ihostmn NS/BTC](https://ihostmn.com/buysell.php?market=NSBTC)
 
 ### Explorer
@@ -39,4 +39,4 @@
 
 - ![Logo](https://camo.githubusercontent.com/a1c4b292b9675610b46f6f74234d6abd42a29afba84d00c72b841a4534dc460e/68747470733a2f2f6d617374657277696e2e6f6e6c696e652f6769746875622f3730333833363730303633313336373732302e706e673f) [IhostMN](https://ihostmn.com)
 - ![Logo](https://camo.githubusercontent.com/028e26d774875a2b23c11df339273f3075b4fd37c6ae90182b5920c517ad4faf/68747470733a2f2f6d617374657277696e2e6f6e6c696e652f6769746875622f3730333833363730323031313136323635342e706e673f) [Crypos](https://crypos.io)
-- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817902260771094549/7567.png)[MasterWin Hosting](https://masterwin.online/hosting.html)
+- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817902260771094549/7567.png) [MasterWin Hosting](https://masterwin.online/hosting.html)
