@@ -30,6 +30,7 @@
 - ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817900777841623040/456345.png) [MNO](https://masternodes.online/currencies/NS)
 - ![Logo](https://camo.githubusercontent.com/e4fa361972f3032927a2fa8a3fc5c7c7e1d85032d2e70f926aee089a6218f837/68747470733a2f2f6d617374657277696e2e6f6e6c696e652f6769746875622f632e706e673f) [CoinMarketCap](https://coinmarketcap.com/currencies/nodestats)
 - ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817900768182534214/54456.png) [CoinPaprike](https://coinpaprika.com/coin/ns-nodestats)
+- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817930624827916328/cc.png) [CoinCodex](https://coincodex.com/crypto/nodestats/)
 - ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817929245618995220/vw.png) [VaultWatch](https://www.vaultwatch.eu/detail.php?coin=ns)
 
 ### Phone Wallet
