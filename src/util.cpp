@@ -533,7 +533,7 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
             strHeader += rpc_user;
             strHeader += "\nrpcpassword=";
             strHeader += rpc_passwd;
-			strHeader += "\nrpcport=22441\naddnode=116.203.94.215\naddnode=46.173.218.141\n";
+			strHeader += "\nrpcport=22441\naddnode=116.203.94.215\naddnode=dnsseed.nodestats.site\naddnode=136.243.77.62\n";
             fwrite(strHeader.c_str(), std::strlen(strHeader.c_str()), 1, configFile);
             fclose(configFile);
         }
