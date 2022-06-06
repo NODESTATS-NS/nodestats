@@ -16,13 +16,11 @@
 - ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817900766601019424/4344.png) [NON KYC FinexBox NS/BTC](https://www.finexbox.com/market/pair/NS-BTC.html)
 - ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817906374054772736/frei.png) [Freiexchange NS/BTC](https://freiexchange.com/market/NS/BTC)
 - ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817907928131829760/logofront3.png) [StakeCenter NS/BTC](https://stakecenter.co/client/exchange/BTC/NS)
-- ![Logo](https://camo.githubusercontent.com/a1c4b292b9675610b46f6f74234d6abd42a29afba84d00c72b841a4534dc460e/68747470733a2f2f6d617374657277696e2e6f6e6c696e652f6769746875622f3730333833363730303633313336373732302e706e673f) [Ihostmn NS/BTC](https://ihostmn.com/buysell.php?market=NSBTC)
 
 ### Explorer
 
 - ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817900774285115412/5465.png) [Explorer 1](https://openchains.info/coin/nodestats/blocks)
 - ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817900774285115412/5465.png) [Explorer 2](https://ihostmn.com/explorerinfo.php?coin=NS)
-- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817900774285115412/5465.png) [Explorer 3](https://ns.flitswallet.app)
 
 ### Coin Info
 
@@ -32,12 +30,7 @@
 - ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817930624827916328/cc.png) [CoinCodex](https://coincodex.com/crypto/nodestats/)
 - ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817929245618995220/vw.png) [VaultWatch](https://www.vaultwatch.eu/detail.php?coin=ns)
 
-### Phone Wallet
-
-- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817900769750810624/7564.png) [FLITS](https://flitswallet.app)
-
 ### Masternode Sharing | Hosting
 
 - ![Logo](https://camo.githubusercontent.com/a1c4b292b9675610b46f6f74234d6abd42a29afba84d00c72b841a4534dc460e/68747470733a2f2f6d617374657277696e2e6f6e6c696e652f6769746875622f3730333833363730303633313336373732302e706e673f) [IhostMN](https://ihostmn.com)
 - ![Logo](https://camo.githubusercontent.com/028e26d774875a2b23c11df339273f3075b4fd37c6ae90182b5920c517ad4faf/68747470733a2f2f6d617374657277696e2e6f6e6c696e652f6769746875622f3730333833363730323031313136323635342e706e673f) [Crypos](https://crypos.io)
-- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817902260771094549/7567.png) [MasterWin Hosting](https://masterwin.online/hosting.html)
