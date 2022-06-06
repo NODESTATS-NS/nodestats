@@ -20,10 +20,9 @@
 
 ### Explorer
 
-- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817900774285115412/5465.png) [Explorer 1](http://176.123.2.135:3001)
-- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817900774285115412/5465.png) [Explorer 2](https://openchains.info/coin/nodestats/blocks)
-- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817900774285115412/5465.png) [Explorer 3](https://ihostmn.com/explorerinfo.php?coin=NS)
-- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817900774285115412/5465.png) [Explorer 4](https://ns.flitswallet.app)
+- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817900774285115412/5465.png) [Explorer 1](https://openchains.info/coin/nodestats/blocks)
+- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817900774285115412/5465.png) [Explorer 2](https://ihostmn.com/explorerinfo.php?coin=NS)
+- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817900774285115412/5465.png) [Explorer 3](https://ns.flitswallet.app)
 
 ### Coin Info
 
