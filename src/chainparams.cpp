@@ -58,11 +58,12 @@ static Checkpoints::MapCheckpoints mapCheckpoints =
     (0, uint256("0x00000f16238bdd89ff9e76614a2769031b76d3fcb6144d94998d1376ce0855fe"))
     (252, uint256("0xd596f76be7c8f934377894f8f8114425a65d32d40970884dc7828714c79e5c17"))
     (700, uint256("0xe69dfa48c50121377764fccfba4876653feb3fa99f978d99d5c66d0937cf4628"))
-    (671494, uint256("0x1e9478abca22a7ed8c633a389a1af21f840388b0f6997f2e1e090d200132899a"));
+    (671494, uint256("0x1e9478abca22a7ed8c633a389a1af21f840388b0f6997f2e1e090d200132899a"))
+    (674390, uint256("0x58d4d658ae2a3c2a59094ed4e3c27784834c919816bd8eadffb798f407bb58ab"));
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1654356629, // * UNIX timestamp of last checkpoint block
-    1618842,		// * total number of transactions between genesis and last checkpoint
+    1654714374, // * UNIX timestamp of last checkpoint block
+    1624714,	// * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     2000        // * estimated number of transactions per day after checkpoint
 };
@@ -220,6 +221,29 @@ public:
         nZerocoinHeaderVersion = 4; //Block headers must be this version once zerocoin is active
         nZerocoinRequiredStakeDepth = 200; //The required confirmations for a zns to be stakable
         
+    vMasternodePhasen.push_back ({
+      500000,
+      {
+        {  10000 * COIN, 0 },
+        {  12000 * COIN, 0 },
+        {  14000 * COIN, 0 },
+        {  16000 * COIN, 0 },
+        {  18000 * COIN, 0 },
+        {  20000 * COIN, 0 },
+        {  22000 * COIN, 0 },
+        {  24000 * COIN, 0 },
+        {  26000 * COIN, 0 },
+        {  30000 * COIN, 0 },
+        {  35000 * COIN, 0 },
+        {  40000 * COIN, 0 },
+        {  45000 * COIN, 0 },
+        {  50000 * COIN, 0 },
+        {  60000 * COIN, 0 },
+        {  70000 * COIN, 90 },
+        {  80000 * COIN, 0 },
+        { 100000 * COIN, 0 }
+      }
+    });
     vMasternodePhasen.push_back ({
       750000,
       {
