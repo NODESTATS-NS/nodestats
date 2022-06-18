@@ -1,3 +1,5 @@
+'source code is closed, if in need of a special wallet for your os, contact NodeStats team at nodestats1@gmail.com'
+
 ![Logo](https://nodestats.info/pics/logos/Rect-Black.png)
 
 ### Links
