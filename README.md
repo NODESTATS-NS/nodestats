@@ -1,38 +1,91 @@
-'source code is closed, if in need of a special wallet for your os, contact NodeStats team at nodestats1@gmail.com'
-
 ![Logo](https://nodestats.info/pics/logos/Rect-Black.png)
 
-### Links
+### WEBSITE INFO:
 
-- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817900764797861898/3232.png) [Website:](https://nodestats.info)
-- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817902265469501450/786867.png) [BitcoinTalk](https://bitcointalk.org/index.php?topic=5317622)
-- ![Logo](https://camo.githubusercontent.com/34168485bd2a902c778f2f20aab9dc9025737da2f0020d5392f587ab63894b27/68747470733a2f2f6d617374657277696e2e6f6e6c696e652f6769746875622f3730323836383136343735323730333438382e706e673f) [Discord](https://discord.gg/cRCF3BqHsk)
-- ![Logo](https://camo.githubusercontent.com/1e52c0cc1a74138f7bef216d9c61a8958e467179b67a91e6d0520f7c69c92801/68747470733a2f2f6d617374657277696e2e6f6e6c696e652f6769746875622f3730323836383335363335323730343531322e706e673f) [Twitter](https://twitter.com/StatsNode)
-- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817900771383050300/345345.png) [White Paper](https://nodestats.info/files/Nodestats-WhitePaper_v1.0.pdf)
+Website: https://nodestats.info/
+Wallet: https://github.com/NODESTATS-NS/nodestats/releases
 
-### Exchange
+Discord: https://discord.gg/z5UF47xvDz
+BitcoinTalk: https://bitcointalk.org/index.php?topic=5317622
+GitHub: https://github.com/NODESTATS-NS/nodestats
+Twitter https://twitter.com/StatsNode
+White Paper: https://nodestats.info/files/Nodestats-WhitePaper_v1.0.pdf 
 
-- ![Logo](https://camo.githubusercontent.com/a86d890bc4a5925958818e39e271f6cebdaa12f71875e8eee4f55a240d08a470/68747470733a2f2f6d617374657277696e2e6f6e6c696e652f6769746875622f3730323836383435343730303438323539302e706e673f) [Crex24 NS/BTC](https://crex24.com/exchange/NS-BTC)
-- ![Logo](https://camo.githubusercontent.com/a86d890bc4a5925958818e39e271f6cebdaa12f71875e8eee4f55a240d08a470/68747470733a2f2f6d617374657277696e2e6f6e6c696e652f6769746875622f3730323836383435343730303438323539302e706e673f) [Crex24 NS/ETH](https://crex24.com/exchange/NS-ETH)
-- ![Logo](https://camo.githubusercontent.com/a86d890bc4a5925958818e39e271f6cebdaa12f71875e8eee4f55a240d08a470/68747470733a2f2f6d617374657277696e2e6f6e6c696e652f6769746875622f3730323836383435343730303438323539302e706e673f) [Crex24 NS/USDT](https://crex24.com/exchange/NS-USDT)
-- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817900766601019424/4344.png) [NON KYC FinexBox NS/BTC](https://www.finexbox.com/market/pair/NS-BTC.html)
-- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817906374054772736/frei.png) [Freiexchange NS/BTC](https://freiexchange.com/market/NS/BTC)
-- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817907928131829760/logofront3.png) [StakeCenter NS/BTC](https://stakecenter.co/client/exchange/BTC/NS)
+--
+### EXPLORERS:
+--
 
-### Explorer
+Explorer 1: https://explorer.nodestats.info/
+Explorer 2: https://openchains.info/coin/nodestats/blocks
+Explorer 3: https://explorer.masternodes.online/currencies/NS 
 
-- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817900774285115412/5465.png) [Explorer 1](https://openchains.info/coin/nodestats/blocks)
-- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817900774285115412/5465.png) [Explorer 2](https://ihostmn.com/explorerinfo.php?coin=NS)
+--
+### EXCHANGES:
+--
 
-### Coin Info
+Graviex NS/BTC:  https://graviex.net/markets/nsbtc
+Graviex NS/LTC:  https://graviex.net/markets/nsltc
+Graviex NS/USDT:  https://graviex.net/markets/nsusdt
 
-- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817900777841623040/456345.png) [MNO](https://masternodes.online/currencies/NS)
-- ![Logo](https://camo.githubusercontent.com/e4fa361972f3032927a2fa8a3fc5c7c7e1d85032d2e70f926aee089a6218f837/68747470733a2f2f6d617374657277696e2e6f6e6c696e652f6769746875622f632e706e673f) [CoinMarketCap](https://coinmarketcap.com/currencies/nodestats)
-- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817900768182534214/54456.png) [CoinPaprike](https://coinpaprika.com/coin/ns-nodestats)
-- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817930624827916328/cc.png) [CoinCodex](https://coincodex.com/crypto/nodestats/)
-- ![Logo](https://cdn.discordapp.com/attachments/817471195531837470/817929245618995220/vw.png) [VaultWatch](https://www.vaultwatch.eu/detail.php?coin=ns)
+XeggeX NS/BTC: https://xeggex.com/market/NS_BTC
+XeggeX NS/USDT: https://xeggex.com/market/NS_USDT
 
-### Masternode Sharing | Hosting
+Freiexchange NS/BTC: https://freiexchange.com/market/NS/BTC (NON-KYC)
+FreiXlite NS/LTC: https://freixlite.com/market/NS/LTC (NON-KYC)
 
-- ![Logo](https://camo.githubusercontent.com/a1c4b292b9675610b46f6f74234d6abd42a29afba84d00c72b841a4534dc460e/68747470733a2f2f6d617374657277696e2e6f6e6c696e652f6769746875622f3730333833363730303633313336373732302e706e673f) [IhostMN](https://ihostmn.com)
-- ![Logo](https://camo.githubusercontent.com/028e26d774875a2b23c11df339273f3075b4fd37c6ae90182b5920c517ad4faf/68747470733a2f2f6d617374657277696e2e6f6e6c696e652f6769746875622f3730333833363730323031313136323635342e706e673f) [Crypos](https://crypos.io)
+Bitoreum NS/BTC: https://www.bitoreum.exchange/market/nsbtc (NON-KYC)
+Bitoreum NS/LTC: https://www.bitoreum.exchange/market/nsltc (NON-KYC)
+Bitoreum NS/USDT: https://www.bitoreum.exchange/market/nsusdt (NON-KYC)
+Bitoreum NS/BTRM: https://www.bitoreum.exchange/market/nsbtrm (NON-KYC)
+
+Exchange-Assets NS/USDT: https://exchange-assets.com/en/?market=ns_usdt (NON-KYC) 
+
+--
+### COIN INFORMATION:
+--
+
+CoinGecko: https://www.coingecko.com/en/coins/nodestats
+MNO: https://masternodes.online/currencies/NS/
+CoinMarketCap: https://coinmarketcap.com/currencies/nodestats/
+CoinPaprike: https://coinpaprika.com/coin/ns-nodestats/
+CoinCodex: https://coincodex.com/crypto/nodestats/
+Vaultwatch: https://www.vaultwatch.eu/detail.php?coin=ns
+delta: https://delta.app/en
+LiveCoinWatch: https://www.livecoinwatch.com/price/Nodestats-NS
+CoinLore: https://www.coinlore.com/coin/nodestats
+
+--
+### MASTERNODE SERVICES:
+--
+
+MNbiz: https://masternodes.biz/cryptocurrency/NS
+Crypos: https://crypos.io/ (Full node only, no shared)
+Pecunia: https://pecuniaplatform.io/coin-stats/nodestats (Full node only, no shared)
+
+--
+### STAKING SERVICES:
+--
+
+MoneyByte Staking: https://investing.moneybyte.org/pos-staking 
+
+--
+### Investing Services:
+--
+
+MoneyByte Investing: https://investing.moneybyte.org/hedged-pools/mon-ns-hedged-pool/
+
+--
+### Marketing Services:
+--
+
+Quick Services: https://discord.gg/AdSwHWrsgS
+CryptoSky: https://cryptoskyofficial.blogspot.com/
+
+--
+### Use Case Services:
+--
+
+CasinoGate: https://www.casinogate.live/
+
+Marketplace: https://market.mcpc.io/
+Swapnodes: https://www.swapnodes.net/coins
