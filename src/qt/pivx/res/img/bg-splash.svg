@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 750 520" style="enable-background:new 0 0 750 520;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;}
+	.st1{clip-path:url(#SVGID_2_);}
+	.st2{fill:url(#PIVX_wallet_core-02_1_);}
+</style>
+<pattern  y="520" width="1565" height="1085.1" patternUnits="userSpaceOnUse" id="pattern" viewBox="0 -1085.5 1565 1085.1" style="overflow:visible;">
+	<g>
+		<rect y="-1085.5" class="st0" width="1565" height="1085.1"/>
+		
+			<image style="overflow:visible;enable-background:new    ;" width="1565" height="1086" xlink:href="66B4438.jpg"  transform="matrix(1 0 0 -1 0 0)">
+		</image>
+	</g>
+</pattern>
+<g>
+	<defs>
+		<rect id="SVGID_1_" width="750" height="520"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+	</clipPath>
+	<g id="Mask_Group_96" class="st1">
+		<g id="bg_splash">
+			
+				<pattern  id="PIVX_wallet_core-02_1_" xlink:href="#pattern" patternTransform="matrix(0.4905 0 0 -0.4905 -3870.634 -12968.793)">
+			</pattern>
+			<path id="PIVX_wallet_core-02" class="st2" d="M-12.4-6.5h767.5v532.7H-12.4V-6.5z"/>
+		</g>
+	</g>
+</g>
+<image style="overflow:visible;" width="640" height="360" xlink:href="../../background.jpg"  transform="matrix(1.1719 0 0 1.4444 0 0)">
+</image>
+</svg>

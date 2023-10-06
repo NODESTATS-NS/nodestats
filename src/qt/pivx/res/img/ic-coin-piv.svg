@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1"
+	 id="ic_piv" inkscape:version="1.1.1 (eb90963e84, 2021-10-02)" sodipodi:docname="ic-coin-piv.svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24"
+	 style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<sodipodi:namedview  bordercolor="#666666" borderopacity="1" gridtolerance="10" guidetolerance="10" id="namedview17" inkscape:current-layer="ic_piv" inkscape:cx="9.1265306" inkscape:cy="15.804082" inkscape:document-rotation="0" inkscape:pagecheckerboard="0" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-height="713" inkscape:window-maximized="1" inkscape:window-width="1299" inkscape:window-x="67" inkscape:window-y="27" inkscape:zoom="30.625" objecttolerance="10" pagecolor="#ffffff" showgrid="false">
+	</sodipodi:namedview>
+<g>
+	<defs>
+		<polyline id="SVGID_1_" points="92.5,-64.7 -52.9,-64.7 -52.9,124.6 92.5,124.6 92.5,-64.7 		"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+	</clipPath>
+	<g style="clip-path:url(#SVGID_2_);enable-background:new    ;">
+		
+			<image style="overflow:visible;" width="111" height="144" id="image848" xlink:href="BFE8CF67.png"  transform="matrix(1.3333 0 0 1.3333 -54.19 125.9476)">
+		</image>
+	</g>
+</g>
+<g>
+	<defs>
+		<polyline id="SVGID_3_" points="95.6,-64.8 -49.8,-64.8 -49.8,124.5 95.6,124.5 95.6,-64.8 		"/>
+	</defs>
+	<clipPath id="SVGID_4_">
+		<use xlink:href="#SVGID_3_"  style="overflow:visible;"/>
+	</clipPath>
+	<g style="clip-path:url(#SVGID_4_);enable-background:new    ;">
+		
+			<image style="overflow:visible;" width="111" height="144" id="image869" xlink:href="BFE8CF65.png"  transform="matrix(1.3333 0 0 1.3333 -51.1043 125.8333)">
+		</image>
+	</g>
+</g>
+<image style="overflow:visible;" width="128" height="128" xlink:href="../res/icons/overview.png"  transform="matrix(0.1697 0 0 0.1658 1.1739 1.5217)">
+</image>
+</svg>

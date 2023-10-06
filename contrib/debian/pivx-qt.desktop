@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=Nodestats
+Comment= NS P2P Cryptocurrency
+Comment[fr]= NS, monnaie virtuelle cryptographique pair à pair
+Comment[tr]= NS, eşten eşe kriptografik sanal para birimi
+Exec=ns-qt %u
+Terminal=false
+Type=Application
+Icon=pivx128
+MimeType=x-scheme-handler/pivx;
+Categories=Office;Finance;
+StartupWMClass=Nodestats-qt
