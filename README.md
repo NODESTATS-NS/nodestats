@@ -11,17 +11,13 @@ GitHub: https://github.com/NODESTATS-NS/nodestats
 Twitter https://twitter.com/StatsNode
 White Paper: https://nodestats.info/files/Nodestats-WhitePaper_v1.0.pdf 
 
---
 ### EXPLORERS:
---
 
 Explorer 1: https://explorer.nodestats.info/
 Explorer 2: https://openchains.info/coin/nodestats/blocks
 Explorer 3: https://explorer.masternodes.online/currencies/NS 
 
---
 ### EXCHANGES:
---
 
 Graviex NS/BTC:  https://graviex.net/markets/nsbtc
 Graviex NS/LTC:  https://graviex.net/markets/nsltc
@@ -40,9 +36,7 @@ Bitoreum NS/BTRM: https://www.bitoreum.exchange/market/nsbtrm (NON-KYC)
 
 Exchange-Assets NS/USDT: https://exchange-assets.com/en/?market=ns_usdt (NON-KYC) 
 
---
 ### COIN INFORMATION:
---
 
 CoinGecko: https://www.coingecko.com/en/coins/nodestats
 MNO: https://masternodes.online/currencies/NS/
@@ -54,36 +48,26 @@ delta: https://delta.app/en
 LiveCoinWatch: https://www.livecoinwatch.com/price/Nodestats-NS
 CoinLore: https://www.coinlore.com/coin/nodestats
 
---
 ### MASTERNODE SERVICES:
---
 
 MNbiz: https://masternodes.biz/cryptocurrency/NS
 Crypos: https://crypos.io/ (Full node only, no shared)
 Pecunia: https://pecuniaplatform.io/coin-stats/nodestats (Full node only, no shared)
 
---
 ### STAKING SERVICES:
---
 
 MoneyByte Staking: https://investing.moneybyte.org/pos-staking 
 
---
 ### Investing Services:
---
 
 MoneyByte Investing: https://investing.moneybyte.org/hedged-pools/mon-ns-hedged-pool/
 
---
 ### Marketing Services:
---
 
 Quick Services: https://discord.gg/AdSwHWrsgS
 CryptoSky: https://cryptoskyofficial.blogspot.com/
 
---
 ### Use Case Services:
---
 
 CasinoGate: https://www.casinogate.live/
 
