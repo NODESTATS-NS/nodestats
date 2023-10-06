@@ -2,8 +2,8 @@
 
 ### WEBSITE INFO:
 
-Website: https://nodestats.info/
-Wallet: https://github.com/NODESTATS-NS/nodestats/releases
+*Website: https://nodestats.info/
+*Wallet: https://github.com/NODESTATS-NS/nodestats/releases
 
 Discord: https://discord.gg/z5UF47xvDz
 BitcoinTalk: https://bitcointalk.org/index.php?topic=5317622
