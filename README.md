@@ -70,6 +70,3 @@
 ### Use Case Services:
 
 - CasinoGate: https://www.casinogate.live/
-
-- Marketplace: https://market.mcpc.io/
-- Swapnodes: https://www.swapnodes.net/coins
